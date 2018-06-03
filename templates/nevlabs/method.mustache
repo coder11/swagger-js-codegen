@@ -4,7 +4,7 @@ export interface {{&methodName}}Args {
 {{/parameters}}
 }
 
-export function {{&methodName}} (args: {{&methodName}}Args, options: Partial<RequestOptions>): AxiosPromise<any> {
+export function {{&methodName}} (args: {{&methodName}}Args, options: Partial<RequestOptions>): AxiosPromise<{{#okResponse}}	{{> type}} {{/okResponse}}> {
 	options = Object.assign(options, defaultOptions);
 	let params:any = {};
 	let data:any = {};
