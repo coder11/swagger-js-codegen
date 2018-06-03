@@ -1,0 +1,31 @@
+export interface {{&methodName}}Args {
+{{#parameters}}	
+	{{&camelCaseName}}{{&cardinality}}: {{> type}};
+{{/parameters}}
+}
+
+export function {{&methodName}} (args: {{&methodName}}Args, options: Partial<RequestOptions>): AxiosPromise<any> {
+	options = Object.assign(options, defaultOptions);
+	let params:any = {};
+	let data:any = {};
+	{{#parameters}}	
+		{{#isQueryParameter}}
+		params.{{&camelCaseName}} = args.{{&camelCaseName}};
+		{{/isQueryParameter}}
+		{{#isPathParameter}}
+		params.{{&camelCaseName}} = args.{{&camelCaseName}};
+		{{/isPathParameter}}
+		{{#isBodyParameter}}
+		data.{{&camelCaseName}} = args.{{&camelCaseName}};
+		{{/isBodyParameter}}
+	{{/parameters}}	
+	let config: AxiosRequestConfig = {
+		method: '{{method}}',
+		url: '{{&path}}',
+		baseURL: options.baseUrl,
+		headers: options.headers,
+		params: params,
+		data: data
+	};
+	return axios(config);
+}
