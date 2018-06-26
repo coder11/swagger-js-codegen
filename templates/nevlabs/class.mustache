@@ -3,6 +3,22 @@
 // tslint:disable:no-any
 import axios, { AxiosPromise, AxiosRequestConfig  } from 'axios';
 
+const interpolate = (s: string, obj: object | null) => {
+    if (!obj || !s) {
+        return s;
+    }
+
+    for (const objKey of Object.keys(obj)) {
+        const strKey = '{' + objKey + '}';
+        if (s.indexOf(strKey) !== -1) {
+            s = s.replace(strKey, obj[objKey]);
+            delete obj[objKey];
+        }
+    }
+
+    return s;
+};
+
 export interface RequestOptions {
 	baseUrl: string;
 	headers: {};

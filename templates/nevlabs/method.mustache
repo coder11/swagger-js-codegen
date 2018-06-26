@@ -4,24 +4,22 @@ export interface {{&methodName}}Args {
 {{/parameters}}
 }
 
-export function {{&methodName}} (args: {{&methodName}}Args, options: Partial<RequestOptions>): AxiosPromise<{{#okResponse}}	{{> type}} {{/okResponse}}> {
+export function {{&methodName}} (args: {{&methodName}}Args, options: Partial<RequestOptions>): AxiosPromise<any> {
 	options = Object.assign(options, defaultOptions);
+	let url = interpolate('{{&path}}', args);
 	let params:any = {};
 	let data:any = {};
 	{{#parameters}}	
 		{{#isQueryParameter}}
 		params.{{&camelCaseName}} = args.{{&camelCaseName}};
 		{{/isQueryParameter}}
-		{{#isPathParameter}}
-		params.{{&camelCaseName}} = args.{{&camelCaseName}};
-		{{/isPathParameter}}
 		{{#isBodyParameter}}
-		data.{{&camelCaseName}} = args.{{&camelCaseName}};
+		data = args.{{&camelCaseName}};
 		{{/isBodyParameter}}
 	{{/parameters}}	
 	let config: AxiosRequestConfig = {
 		method: '{{method}}',
-		url: '{{&path}}',
+		url: url,
 		baseURL: options.baseUrl,
 		headers: options.headers,
 		params: params,
