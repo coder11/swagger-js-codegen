@@ -1,5 +1,5 @@
 {
-  "name": "swagger-js-codegen",
+  "name": "nevlabs-js-codegen",
   "main": "./lib/codegen.js",
   "version": "1.12.0",
   "description": "A Swagger codegen for JavaScript",
@@ -8,14 +8,14 @@
     "clean": "rm -rf tmp-*"
   },
   "bin": {
-    "swagger2js": "bin/swagger2js.js"
+    "apigen": "bin/apigen.js"
   },
   "bugs": {
-    "url": "https://github.com/wcandillon/swagger-js-codegen/issues"
+    "url": "https://github.com/coder11/swagger-js-codegen/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/wcandillon/swagger-js-codegen.git"
+    "url": "git://github.com/coder11/swagger-js-codegen.git"
   },
   "keywords": [
     "swagger",
@@ -27,7 +27,7 @@
     "url": "http://28.io"
   },
   "license": "Apache-2.0",
-  "homepage": "https://github.com/wcandillon/swagger-js-codegen",
+  "homepage": "https://github.com/coder11/swagger-js-codegen",
   "dependencies": {
     "axios": "^0.18.0",
     "commander": "^2.9.0",
