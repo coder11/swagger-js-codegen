@@ -44,9 +44,19 @@ export const Operations = strEnum([
 ]);
 export type Operations = keyof typeof Operations;
 
+{{#enums}}
+    export enum {{&name}} { 
+        {{#tsType}}{{&enumValues}}{{/tsType}} 
+    }
+{{/enums}}
+
 {{#definitions}}
-export interface {{&name}} {{#tsType}}{{> type}}{{/tsType}}
+    export interface {{&name}} {{#tsType}}{{> type}}{{/tsType}}
 {{/definitions}}
+
+{{#enums}}
+export enum {{&name}} {{&value}}
+{{/enums}}
 
 {{#methods}}
     {{> method}}
