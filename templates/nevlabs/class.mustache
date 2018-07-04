@@ -54,10 +54,6 @@ export type Operations = keyof typeof Operations;
     export interface {{&name}} {{#tsType}}{{> type}}{{/tsType}}
 {{/definitions}}
 
-{{#enums}}
-export enum {{&name}} {{&value}}
-{{/enums}}
-
 {{#methods}}
     {{> method}}
 {{/methods}}
