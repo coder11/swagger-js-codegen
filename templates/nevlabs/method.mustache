@@ -5,7 +5,7 @@ export interface {{&methodName}}Args {
 }
 
 export function {{&methodName}} (args: {{&methodName}}Args, options: Partial<RequestOptions>): AxiosPromise<{{#okResponse}}	{{> type}} {{/okResponse}}> {
-	options = Object.assign(options, defaultOptions);
+	options = Object.assign(defaultOptions, options);
 	let url = interpolate('{{&path}}', args);
 	let params:any = {};
 	let data:any = {};
